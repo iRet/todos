@@ -1,5 +1,8 @@
-var text = "#{ escape_javascript(render partial: 'todo', object: @todo) }";
-$('#todos').append(text);
+- if @todo.valid?
+  var text = "#{ escape_javascript(render partial: 'todo', object: @todo) }";
+  $('#todos').append(text);
 
-$("#form").toggle();
-$("#form :input").not(":submit").val('');
+  $("#form").toggle();
+  $("#form :input").not(":submit").val('');
+
+update_status("#{flash[:notice]}","#{flash[:alert]}");

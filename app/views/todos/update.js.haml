@@ -1,2 +1,5 @@
-var text = "#{ escape_javascript(render partial: 'todo', object: @todo) }";
-$("#todo_#{@todo.id}").replaceWith(text);
+- if @todo.valid?
+  var text = "#{ escape_javascript(render partial: 'todo', object: @todo) }";
+  $("#todo_#{@todo.id}").replaceWith(text);
+
+update_status("#{flash[:notice]}","#{flash[:alert]}");

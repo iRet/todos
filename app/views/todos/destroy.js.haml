@@ -1,1 +1,4 @@
-$("#todo_#{@todo.id}").remove();
+- if @todo
+  $("#todo_#{@todo.id}").remove();
+
+update_status("#{flash[:notice]}","#{flash[:alert]}");

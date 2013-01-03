@@ -23,3 +23,8 @@ $(function() {
       $this.trigger('ajax:replaced');
     });
 });
+
+var update_status = function(notice,alert){
+  $('p.notice').html(notice);
+  $('p.alert').html(alert);
+}

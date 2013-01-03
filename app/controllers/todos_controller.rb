@@ -15,41 +15,44 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml { render :xml => @todos }
     end
   end
 
   def create
     @todo = current_user.todos.new params[:todo]
     if @todo.save
-      respond_to do |format|
-        format.xml { render :xml => @todo }
-        format.js
-      end
+      flash[:notice] = "Successfuly created"
     else
-      flash[:alert] = "Something going wrong"
-      respond_to do |format|
-        format.xml { render :xml => @todo.errors.messages }
-        format.js
-      end
+      flash[:notice] = "Something going wrong on creation"
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
     @todo = current_user.todos.find params[:id]
-
+    if @todo.update_attributes params[:todo]
+      flash[:notice] = "Successfuly updated"
+    else
+      flash[:notice] = "Something going wrong on updating"
+    end
     respond_to do |format|
-      format.xml { head :ok }
       format.js
     end
   end
 
   def destroy
-    @todo = current_user.todos.find params[:id]
-    @todo.destroy
+    @todo = current_user.todos.find_by_id params[:id]
+
+    if @todo
+      @todo.destroy
+      flash[:notice] = "Successfuly deleted"
+    else
+      flash[:notice] = "Not found"
+    end
 
     respond_to do |format|
-      format.xml { head :ok }
       format.js
     end
   end
