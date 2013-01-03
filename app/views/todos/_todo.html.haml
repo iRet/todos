@@ -1,0 +1,8 @@
+%li{id: "todo_#{todo.id}"}
+  %span.data
+    = todo.title
+    (#{todo.priority_title})
+  %span.actions
+    = link_to 'edit', edit_todo_path(todo), remote: true, :"data-replace" => "#todo_#{todo.id}"
+    = link_to 'delete', todo, remote: true, method: 'delete', confirm: 'sure?'
+.clear

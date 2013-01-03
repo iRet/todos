@@ -1,0 +1,10 @@
+%h1 Todos for #{current_user.email}
+
+%ul{id:'todos'}
+  = render partial: 'todo', collection: @todos
+
+
+%div
+  = link_to 'add one', '#', id: 'add_one'
+  #form{style: 'display:none;'}
+    = render partial: 'form'

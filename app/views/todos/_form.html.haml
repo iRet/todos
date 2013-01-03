@@ -1,0 +1,4 @@
+= form_for @todo, remote: true do |f|
+  = f.text_field :title
+  = f.select :priority, [['low',0], ['normal',1], ['high',2]]
+  = f.submit 'ok'

@@ -1,0 +1,2 @@
+var text = "#{ escape_javascript(render partial: 'todo', object: @todo) }";
+$("#todo_#{@todo.id}").replaceWith(text);
