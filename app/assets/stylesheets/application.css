@@ -21,3 +21,7 @@ ul.hmenu {
 ul.hmenu li {
   display: inline;
 }
+
+ul {
+  list-style-type: none;
+}

@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20130102060626) do
 
   create_table "todos", :force => true do |t|
     t.string   "title"
-    t.integer  "priority"
+    t.integer  "priority",   :default => 0
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "users", :force => true do |t|
